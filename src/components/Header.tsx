@@ -11,7 +11,7 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="flex justify-between items-center px-32 py-3 border-b-[1px]">
+    <header className="flex justify-between items-center px-32 py-3 border-b-[1px] border-[#455967]">
       <h1 className="text-3xl font-bold transition-all hover:text-emerald-200">
         <Link href="#">KBOOM</Link>
       </h1>
