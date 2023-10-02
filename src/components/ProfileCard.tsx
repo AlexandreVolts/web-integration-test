@@ -12,12 +12,12 @@ interface ProfileCardProps {
 }
 export function ProfileCard(props: ProfileCardProps) {
   return (
-    <div className="p-2 pb-4 space-y-4 border-[1px] border-[#455967]">
+    <div className="w-64 p-2 pb-4 space-y-4 border-[1px] border-[#455967] rounded-sm">
       <div className="flex items-center space-x-8">
         <span className="p-1 text-[#282c3c] bg-[#2ce5a7] rounded-full">
           <IconUser />
         </span>
-        <p>{props.pseudo}</p>
+        <p className="text-white">{props.pseudo}</p>
       </div>
       <ProgressBar label={props.level.toString()} progress={props.progress} />
       <div className="flex justify-between">

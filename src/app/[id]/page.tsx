@@ -5,6 +5,14 @@ import { Header } from "@/components/Header";
 import { SideDetails } from "@/components/SideDetails";
 import { ProfileCard } from "@/components/ProfileCard";
 import { useParams } from "next/navigation";
+import {
+  IconBell,
+  IconBuildingStore,
+  IconMap,
+  IconMedal2,
+  IconMilitaryAward,
+  IconNews,
+} from "@tabler/icons-react";
 
 export default function Home() {
   const params = useParams();
@@ -15,7 +23,11 @@ export default function Home() {
       <div className="flex grow">
         <SideMenu>
           {[1, 2, 3].map((icon, index) => (
-            <SideMenu.Tab key={index} value={index.toString()}>
+            <SideMenu.Tab
+              key={index}
+              value={index.toString()}
+              selected={index.toString() === params.id}
+            >
               {icon}
             </SideMenu.Tab>
           ))}
@@ -33,7 +45,14 @@ export default function Home() {
               progress={0.1}
             />
           }
-        ></SideDetails>
+        >
+          <SideDetails.Tab label="Quests" icon={<IconNews />} />
+          <SideDetails.Tab label="Adventures" icon={<IconMap />} />
+          <SideDetails.Tab label="Leaderboard" icon={<IconMedal2 />} />
+          <SideDetails.Tab label="Shop" icon={<IconBuildingStore />} />
+          <SideDetails.Tab label="Club" icon={<IconMilitaryAward />} />
+          <SideDetails.Tab label="Notifications" icon={<IconBell />} />
+        </SideDetails>
       </div>
     </div>
   );

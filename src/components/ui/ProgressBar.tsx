@@ -10,7 +10,7 @@ export function ProgressBar(props: ProgressBarProps) {
       <div className="flex justify-center items-center w-6 h-6 text-sm text-[#282c3c] bg-[#2ce5a7] border-[1px] border-[#2ce5a7] rounded-sm">
         <p>{props.label}</p>
       </div>
-      <div className="w-full h-4 border-[1px] border-[#2ce5a7] rounded-r-sm">
+      <div className="w-full h-4 border-[1px] border-[#2ce5a7] bg-[#455967] rounded-r-sm">
         <div
           className="h-full bg-[#2ce5a7]"
           style={{ width: `${props.progress * 100}%` }}
