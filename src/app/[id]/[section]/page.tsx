@@ -13,6 +13,13 @@ export default async function HomeSectionSelected(context: any) {
     await fetch(`${process.env.URL}/api/user`)
   ).json();
 
+  if (team.id === undefined) {
+    return (
+      <div className="p-8">
+        <h2 className="text-3xl">Please select an existing team.</h2>
+      </div>
+    );
+  }
   return (
     <>
       <SideDetailsMenu team={team} user={user} section={section} />
