@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "title": "Team GO",
+      "logoUrl": "/logo-teamgo.png"
+    },
+    {
+      "id": 1,
+      "title": "Team Liquid",
+      "logoUrl": "/logo-liquid.png"
+    },
+    {
+      "id": 2,
+      "title": "Team OG",
+      "logoUrl": "/logo-og.webp"
+    },
+    {
+      "id": 3,
+      "title": "Team Fnatic",
+      "logoUrl": "/logo-fnatic.svg"
+    }
+  ],
+  "user": {
+    "pseudo": "Pseudo",
+    "gems": 322,
+    "xp": 12897,
+    "rewards": 2,
+    "level": 7,
+    "progress": 0.1
+  }
+}

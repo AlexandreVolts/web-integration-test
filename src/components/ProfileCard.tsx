@@ -1,18 +1,11 @@
 import { IconCircleArrowUpFilled, IconDiamondFilled, IconSkull, IconUser } from "@tabler/icons-react";
 import { ProgressBar } from "./ui/ProgressBar";
 import { IconWithLabel } from "./ui/IconWIthLabel";
+import { UserData } from "@/types/UserData";
 
-interface ProfileCardProps {
-  pseudo: string;
-  gems: number;
-  xp: number;
-  rewards: number;
-  level: number;
-  progress: number;
-}
-export function ProfileCard(props: ProfileCardProps) {
+export function ProfileCard(props: UserData) {
   return (
-    <div className="w-64 p-2 pb-4 space-y-4 border-[1px] border-[#455967] rounded-sm">
+    <div className="w-64 p-2 pb-3 space-y-4 border-[1px] border-[#455967] rounded-sm">
       <div className="flex items-center space-x-8">
         <span className="p-1 text-[#282c3c] bg-[#2ce5a7] rounded-full">
           <IconUser />
