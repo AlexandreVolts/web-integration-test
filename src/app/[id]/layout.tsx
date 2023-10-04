@@ -1,30 +1,15 @@
-import Image from "next/image";
 import { TeamData } from "@/types/TeamData";
 import { SideMenu } from "@/components/SideMenu";
 
-export default async function RootLayout(context: any) {
-  const teams: TeamData[] = await (
-    await fetch(`${process.env.URL}/api/teams`)
+export default async function Layout(context: any) {
+  const id = context.params.id;
+  const team: TeamData = await (
+    await fetch(`${process.env.URL}/api/teams/${id}`)
   ).json();
 
   return (
     <>
-      <SideMenu>
-        {teams.map((team) => (
-          <SideMenu.Tab
-            key={team.id}
-            value={team.id.toString()}
-            selected={team.id.toString() === context.params.id}
-          >
-            <Image
-              src={team.logoUrl}
-              alt={`${team.title} logo`}
-              width={32}
-              height={32}
-            />
-          </SideMenu.Tab>
-        ))}
-      </SideMenu>
+      <SideMenu selected={team.id} />
       {context.children}
     </>
   );

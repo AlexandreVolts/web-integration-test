@@ -5,8 +5,8 @@ import { UserData } from "@/types/UserData";
 
 export function ProfileCard(props: UserData) {
   return (
-    <div className="w-64 p-2 pb-3 space-y-4 border-[1px] border-[#455967] rounded-sm">
-      <div className="flex items-center space-x-8">
+    <div className="w-64 p-4 pb-3 space-y-4 border-[1px] border-[#455967] rounded-sm">
+      <div className="flex items-center space-x-4">
         <span className="p-1 text-[#282c3c] bg-[#2ce5a7] rounded-full">
           <IconUser />
         </span>

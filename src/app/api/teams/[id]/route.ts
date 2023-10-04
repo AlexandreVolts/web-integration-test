@@ -1,8 +1,7 @@
 import data from "@/json/data.json";
-import { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest, query: any) {
+export async function GET(_: NextRequest, query: any) {
   const { id } = query.params;
   const output = data.data.find((team) => team.id === parseInt(id as string));
 

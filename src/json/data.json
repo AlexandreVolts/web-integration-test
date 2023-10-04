@@ -12,8 +12,8 @@
     },
     {
       "id": 2,
-      "title": "Team Evil Genuises",
-      "logoUrl": "/logo-evil-genuises.png"
+      "title": "Team Vitality",
+      "logoUrl": "/logo-vitality.svg"
     },
     {
       "id": 3,
@@ -27,6 +27,6 @@
     "xp": 12897,
     "rewards": 2,
     "level": 7,
-    "progress": 0.1
+    "progress": 0.2
   }
 }

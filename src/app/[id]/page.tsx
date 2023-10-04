@@ -1,15 +1,18 @@
 import { TeamData } from "@/types/TeamData";
-import { UserData } from "@/types/UserData";
-import { SideDetailsMenu } from "@/components/SideDetailsMenu";
+import { SideDetails } from "@/components/SideDetails";
 
 export default async function HomeTeamSelected(context: any) {
   const id = context.params.id;
   const team: TeamData = await (
     await fetch(`${process.env.URL}/api/teams/${id}`)
   ).json();
-  const user: UserData = await (
-    await fetch(`${process.env.URL}/api/user`)
-  ).json();
 
-  return <SideDetailsMenu team={team} user={user} />;
+  if (team.id === undefined) {
+    return (
+      <div className="p-8">
+        <h2 className="text-3xl">Please select an existing team.</h2>
+      </div>
+    );
+  }
+  return (<SideDetails {...team} />);
 }

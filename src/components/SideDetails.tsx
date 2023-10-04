@@ -1,69 +1,85 @@
-import { ReactNode, createContext } from "react";
 import { UserData } from "@/types/UserData";
 import { ProfileCard } from "./ProfileCard";
+import { Menu } from "./ui/Menu";
+import {
+  IconNews,
+  IconMap,
+  IconMedal2,
+  IconBuildingStore,
+  IconMilitaryAward,
+  IconBell,
+} from "@tabler/icons-react";
 import Image from "next/image";
-import Link from "next/link";
+import { TeamData } from "@/types/TeamData";
 
-interface SideDetailsProps {
-  user: UserData;
-  logoUrl?: string;
-  title: string;
-  children?: ReactNode;
+interface SideDetailsProps extends Partial<TeamData> {
+  selectedSection?: string;
 }
-function SideDetails(props: SideDetailsProps) {
+export async function SideDetails(props: SideDetailsProps) {
+  const user: UserData = await (
+    await fetch(`${process.env.URL}/api/user`)
+  ).json();
+
   return (
-    <div className="px-2 py-8 border-r-[1px] border-[#455967]">
+    <div className="w-68 px-2 py-10 border-r-[1px] border-[#455967]">
       <div className="flex flex-col justify-between">
-        <div className="flex flex-col space-y-8">
+        <div className="flex flex-col space-y-6">
           <div className="flex items-center space-x-4 ">
             {props.logoUrl ? (
+              <div className="flex items-center justify-center w-12 h-12">
               <Image
                 src={props.logoUrl}
                 alt={`${props.title} logo`}
-                width={32}
-                height={32}
+                width={48}
+                height={48}
               />
+              </div>
             ) : (
               <></>
             )}
-            <h3 className="flex text-2xl text-white">{props.title}</h3>
+            <h3 className="text-2xl text-white line-clamp-1">{props.title}</h3>
           </div>
-          <ProfileCard {...props.user} />
-          {props.children ? (
-            <nav>
-              <ul className="space-y-2">{props.children}</ul>
-            </nav>
-          ) : (
-            <></>
-          )}
+          <ProfileCard {...user} />
+          <Menu>
+            <Menu.Item
+              label="Quests"
+              icon={<IconNews />}
+              href={`/${props.id}/quests`}
+              selected={"quests" === props.selectedSection}
+            />
+            <Menu.Item
+              label="Adventures"
+              icon={<IconMap />}
+              href={`/${props.id}/adventures`}
+              selected={"adventures" === props.selectedSection}
+            />
+            <Menu.Item
+              label="Leaderboard"
+              icon={<IconMedal2 />}
+              href={`/${props.id}/leaderboard`}
+              selected={"leaderboard" === props.selectedSection}
+            />
+            <Menu.Item
+              label="Shop"
+              icon={<IconBuildingStore />}
+              href={`/${props.id}/shop`}
+              selected={"shop" === props.selectedSection}
+            />
+            <Menu.Item
+              label="Club"
+              icon={<IconMilitaryAward />}
+              href={`/${props.id}/club`}
+              selected={"club" === props.selectedSection}
+            />
+            <Menu.Item
+              label="Notifications"
+              icon={<IconBell />}
+              href={`/${props.id}/notifications`}
+              selected={"notifications" === props.selectedSection}
+            />
+          </Menu>
         </div>
       </div>
     </div>
   );
 }
-
-interface SideDetailsTabProps {
-  icon: ReactNode;
-  label: string;
-  teamId: number;
-  selected?: boolean;
-}
-function SideDetailsTab(props: SideDetailsTabProps) {
-  const selected = props.selected
-    ? "bg-[#2ce5a7] text-[#282c3c]"
-    : "text-white";
-  return (
-    <li className={`${selected} rounded-full hover:bg-[#2ce5a7] hover:text-[#282c3c] transition-all`}>
-      <Link
-        className="flex px-3 py-2 space-x-2"
-        href={`/${props.teamId}/${props.label.toLowerCase()}`}
-      >
-        <span>{props.icon}</span>
-        <span>{props.label}</span>
-      </Link>
-    </li>
-  );
-}
-
-SideDetails.Tab = SideDetailsTab;
-export { SideDetails };
